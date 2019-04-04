@@ -1,0 +1,10 @@
+<drawables>
+    <bitmap id="LauncherIcon" filename="launcher_icon.png" />
+    <drawable-list id="background" background="Gfx.COLOR_BLACK" width="24" height="12" x="121" y="4">
+        <shape type="rectangle" x="center" y="center" width="fill" height="fill" color="Gfx.COLOR_BLACK"/>
+    </drawable-list>
+    <drawable-list id="battery" background="Gfx.COLOR_TRANSPARENT" width="24" height="12" x="121" y="4">
+        <shape type="rectangle" x="0" y="0" width="23" height="12" color="Gfx.COLOR_TRANSPARENT" border_width="1" border_color="Gfx.COLOR_WHITE"/>
+        <shape type="rectangle" x="22" y="3" width="2" height="5" color="Gfx.COLOR_WHITE"/>
+    </drawable-list>
+</drawables>
