@@ -40,21 +40,24 @@ class ZuluTimeView extends WatchUi.WatchFace {
         var timeString = Lang.format(timeFormat, [hours, clockTime.min.format("%02d")]);
 
         // Update the view
-        var view = View.findDrawableById("TimeLabel");
+        var view = (View.findDrawableById("TimeLabel") as Toybox.WatchUi.Text);
         view.setText(timeString);
 
         var utc = Gregorian.utcInfo(Time.now(), Time.FORMAT_MEDIUM);
 
-        var zulu = View.findDrawableById("ZuluLabel");
+        var zulu = (View.findDrawableById("ZuluLabel") as Toybox.WatchUi.Text);
         zulu.setText(Lang.format("$1$$2$Z", [utc.hour.format("%02d"), utc.min.format("%02d")]));
 
         var local = Gregorian.info(Time.now(), Time.FORMAT_MEDIUM);
-        View.findDrawableById("DateLabel").setText(Lang.format("$1$ $2$", [local.month, local.day.format("%02d")]));
+        var dateLabel = (View.findDrawableById("DateLabel") as Toybox.WatchUi.Text);
+        dateLabel.setText(Lang.format("$1$ $2$", [local.month, local.day.format("%02d")]));
+
+        var bluetoothLabel = (View.findDrawableById("BluetoothLabel") as Toybox.WatchUi.Text);
 
         if (System.getDeviceSettings().phoneConnected) {
-            View.findDrawableById("BluetoothLabel").setText("B");
+            bluetoothLabel.setText("B");
         } else {
-            View.findDrawableById("BluetoothLabel").setText("");
+           bluetoothLabel.setText("");
         }
 
         // Call the parent onUpdate function to redraw the layout
